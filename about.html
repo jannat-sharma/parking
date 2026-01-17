@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Smart Parking Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* About Page Specific Enhancements */
+        .about-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 140px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><pattern id='grain' width='100' height='100' patternUnits='userSpaceOnUse'><circle cx='25' cy='25' r='1' fill='rgba(255,255,255,0.05)'/><circle cx='75' cy='75' r='1.5' fill='rgba(255,255,255,0.03)'/></pattern></defs><rect width='100' height='100' fill='url(%23grain)'/></svg>");
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .about-hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.9) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 25px;
+            line-height: 1.1;
+        }
+
+        .about-hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.25);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, #f0f4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .mission-section {
+            padding: 120px 0;
+            background: #f8f9ff;
+        }
+
+        .mission-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .mission-content h2 {
+            font-size: 2.8rem;
+            color: #1e3c72;
+            margin-bottom: 25px;
+        }
+
+        .mission-content p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .mission-features {
+            list-style: none;
+        }
+
+        .mission-features li {
+            padding: 15px 0;
+            font-size: 1.1rem;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mission-features i {
+            color: #667eea;
+            font-size: 1.3rem;
+            width: 25px;
+        }
+
+        .team-section {
+            padding: 120px 0;
+            background: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .team-card {
+            background: #f8f9ff;
+            padding: 40px;
+            border-radius: 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border-top: 5px solid transparent;
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+            border-top-color: #667eea;
+        }
+
+        .team-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .team-card i {
+            font-size: 4rem;
+            color: #667eea;
+            margin-bottom: 25px;
+        }
+
+        .team-card h3 {
+            font-size: 1.6rem;
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+
+        .timeline-section {
+            padding: 120px 0;
+            background: #f8f9ff;
+        }
+
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 30px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-content.left {
+            margin-right: 55%;
+        }
+
+        .timeline-content.right {
+            margin-left: 55%;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 30px rgba(102,126,234,0.4);
+        }
+
+        .timeline-year {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .about-hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .mission-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+                text-align: center;
+            }
+            
+            .timeline::before {
+                left: 25px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 50px !important;
+                margin-right: 0 !important;
+            }
+            
+            .timeline-content.left,
+            .timeline-content.right {
+                margin-left: 50px;
+                margin-right: 0;
+            }
+            
+            .timeline-icon {
+                left: 25px;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-parking"></i>
+                <span>SmartPark Pro</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link active"><i class="fas fa-info-circle"></i> About</a></li>
+                <li class="nav-item"><a href="parking-slots.html" class="nav-link"><i class="fas fa-car"></i> Parking Slots</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li class="nav-item auth-item"><a href="admin.html" class="nav-link"><i class="fas fa-user-shield"></i> Admin</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="about-hero-content">
+            <h1 class="about-hero-title">About SmartPark Pro</h1>
+            <p class="about-hero-subtitle">
+                Revolutionizing urban parking with cutting-edge technology, 
+                real-time monitoring, and seamless user experience.
+            </p>
+            <div class="stats-row">
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Parking Slots</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Uptime</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">Happy Users</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="mission-container">
+            <div class="mission-content">
+                <h2>Our Mission</h2>
+                <p>
+                    To eliminate parking stress and create smarter cities through innovative 
+                    technology that connects vehicles, parking spaces, and people effortlessly.
+                </p>
+                <ul class="mission-features">
+                    <li><i class="fas fa-check-circle"></i> Real-time slot availability</li>
+                    <li><i class="fas fa-check-circle"></i> Secure vehicle monitoring</li>
+                    <li><i class="fas fa-check-circle"></i> Contactless payments</li>
+                    <li><i class="fas fa-check-circle"></i> 24/7 customer support</li>
+                    <li><i class="fas fa-check-circle"></i> Eco-friendly operations</li>
+                </ul>
+            </div>
+            <div style="text-align: center;">
+                <i class="fas fa-bullseye" style="font-size: 15rem; color: #e1e8ff; opacity: 0.3;"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Features Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">Why SmartPark Pro?</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Advanced Security</h3>
+                    <p>24/7 CCTV surveillance, biometric access, and real-time monitoring ensure complete vehicle safety</p>
+                </div>
+                <div class="team-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Fully Responsive</h3>
+                    <p>Works perfectly on smartphones, tablets, and desktops with lightning-fast performance</p>
+                </div>
+                <div class="team-card">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Real-Time Updates</h3>
+                    <p>Live parking availability, instant notifications, and dynamic pricing in real time</p>
+                </div>
+                <div class="team-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Lightning Fast</h3>
+                    <p>Book in seconds with our optimized system and high-speed servers</p>
+                </div>
+                <div class="team-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer service with instant response times</p>
+                </div>
+                <div class="team-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Eco-Friendly</h3>
+                    <p>Digital-first approach reduces paper usage and optimizes space utilization</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="container">
+            <h2 class="section-title">Our Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="timeline-content left">
+                        <div class="timeline-year">2023</div>
+                        <h3>Project Inception</h3>
+                        <p>SmartPark Pro was conceptualized to solve urban parking challenges with cutting-edge technology.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="timeline-content right">
+                        <div class="timeline-year">2024</div>
+                        <h3>Beta Launch</h3>
+                        <p>Successfully launched beta version with 100+ parking slots and 500+ users.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="timeline-content left">
+                        <div class="timeline-year">2025</div>
+                        <h3>Full Scale</h3>
+                        <p>Expanded to 500+ slots across multiple cities with advanced AI monitoring.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="timeline-content right">
+                        <div class="timeline-year">2026</div>
+                        <h3>Global Expansion</h3>
+                        <p>Planning international expansion with smart city integrations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
